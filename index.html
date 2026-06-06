@@ -1447,6 +1447,25 @@
       line-height: 1.45
     }
 
+    .challenge-detail {
+      display: none;
+      margin-top: 14px;
+      padding-top: 14px;
+      border-top: 1px solid rgba(200, 132, 58, 0.22);
+    }
+
+    .challenge-card.active .challenge-detail {
+      display: block;
+    }
+
+    .challenge-detail .task {
+      font-size: 13px;
+      color: var(--amber);
+      font-weight: 700;
+      line-height: 1.55;
+      margin: 0;
+    }
+
     /* ── QUICK RECAP ────────────────────────────────────── */
     .quick-recap {
       background: var(--navy);
@@ -3205,7 +3224,7 @@
         <div class="practice-tabs">
           <div class="practice-tab active" onclick="switchTab(this,'p6-c')">Controlled</div>
           <div class="practice-tab" onclick="switchTab(this,'p6-a')">Applied</div>
-          <div class="practice-tab" onclick="switchTab(this,'p6-r')">Make It More Realistic</div>
+          <div class="practice-tab" onclick="switchTab(this,'p6-r')">Tone Control Challenge Bank</div>
         </div>
         <div class="practice-pane active" id="p6-c">
           <div class="practice-card">
@@ -4215,12 +4234,15 @@
 
     <!-- PAGE 14 ─ TONE CONTROL CHALLENGE BANK ───────────────────── -->
     <div class="page" id="page-14">
-      <div class="page-eyebrow amber">Challenge Bank</div>
+      <div class="page-eyebrow amber">Practice Upgrade</div>
       <h1 class="page-title">Tone Control Challenge Bank</h1>
-      <p class="page-subtitle">Once the tone move is clear, try the same task with one extra difficulty. Add one
-        challenge at a time.</p>
-      <div class="challenge-grid">
-        <div class="challenge-card" onclick="this.classList.toggle('active')">
+      <p class="page-subtitle">Once the response structure is clear, try the same prompt with one extra difficulty. Add
+        one challenge at a time.</p>
+      <p class="tap-hint">Tap any card to expand it.</p>
+
+      <div class="challenge-grid mt-8">
+
+        <div class="challenge-card" onclick="toggleChallengeCard(this)">
           <div class="challenge-icon"><svg width="15" height="15" viewBox="0 0 15 15" fill="none">
               <path
                 d="M7.5 2v2M7.5 11v2M2 7.5h2M11 7.5h2M3.9 3.9l1.4 1.4M9.7 9.7l1.4 1.4M3.9 11.1l1.4-1.4M9.7 5.3l1.4-1.4"
@@ -4228,24 +4250,37 @@
             </svg></div>
           <div class="challenge-title">New Relationship</div>
           <div class="challenge-quote">The person does not know you well yet.</div>
+          <div class="challenge-detail">
+            <p class="task">Sound warm and approachable without becoming too familiar or casual.</p>
+          </div>
         </div>
-        <div class="challenge-card" onclick="this.classList.toggle('active')">
+
+        <div class="challenge-card" onclick="toggleChallengeCard(this)">
           <div class="challenge-icon"><svg width="15" height="15" viewBox="0 0 15 15" fill="none">
               <path d="M7.5 2.5L9.5 6.5L14 7.2L10.75 10.3L11.5 14.8L7.5 12.7L3.5 14.8L4.25 10.3L1 7.2L5.5 6.5Z"
                 stroke="#C8843A" stroke-width="1.3" stroke-linejoin="round" fill="none" />
             </svg></div>
           <div class="challenge-title">Senior Stakeholder</div>
           <div class="challenge-quote">The person has more authority than you.</div>
+          <div class="challenge-detail">
+            <p class="task">Keep the tone respectful and clear without sounding nervous, stiff, or overly apologetic.
+            </p>
+          </div>
         </div>
-        <div class="challenge-card" onclick="this.classList.toggle('active')">
+
+        <div class="challenge-card" onclick="toggleChallengeCard(this)">
           <div class="challenge-icon"><svg width="15" height="15" viewBox="0 0 15 15" fill="none">
               <path d="M2 3h11v8H2zM5 11v2M10 11v2M3.5 14h8" stroke="#C8843A" stroke-width="1.3" stroke-linecap="round"
                 stroke-linejoin="round" />
             </svg></div>
           <div class="challenge-title">Written Message</div>
           <div class="challenge-quote">The tone must work without voice or facial expression.</div>
+          <div class="challenge-detail">
+            <p class="task">Make the message warm, clear, and easy to read without relying on spoken tone.</p>
+          </div>
         </div>
-        <div class="challenge-card" onclick="this.classList.toggle('active')">
+
+        <div class="challenge-card" onclick="toggleChallengeCard(this)">
           <div class="challenge-icon"><svg width="15" height="15" viewBox="0 0 15 15" fill="none">
               <circle cx="7.5" cy="7.5" r="5.5" stroke="#C8843A" stroke-width="1.3" fill="none" />
               <path d="M7.5 4.5v3l2 1.5" stroke="#C8843A" stroke-width="1.3" stroke-linecap="round"
@@ -4253,8 +4288,12 @@
             </svg></div>
           <div class="challenge-title">Busy Client</div>
           <div class="challenge-quote">The message needs to be warm but short.</div>
+          <div class="challenge-detail">
+            <p class="task">Use one warm phrase, one clear point, and one next step. Do not over-explain.</p>
+          </div>
         </div>
-        <div class="challenge-card" onclick="this.classList.toggle('active')">
+
+        <div class="challenge-card" onclick="toggleChallengeCard(this)">
           <div class="challenge-icon"><svg width="15" height="15" viewBox="0 0 15 15" fill="none">
               <path d="M7.5 2C5 2 3 4 3 6.5c0 3.5 4.5 6.5 4.5 6.5s4.5-3 4.5-6.5C12 4 10 2 7.5 2z" stroke="#C8843A"
                 stroke-width="1.3" fill="none" />
@@ -4262,32 +4301,48 @@
             </svg></div>
           <div class="challenge-title">Slight Frustration</div>
           <div class="challenge-quote">The other person sounds annoyed or disappointed.</div>
+          <div class="challenge-detail">
+            <p class="task">Acknowledge the concern calmly, then continue with a clear and useful response.</p>
+          </div>
         </div>
-        <div class="challenge-card" onclick="this.classList.toggle('active')">
+
+        <div class="challenge-card" onclick="toggleChallengeCard(this)">
           <div class="challenge-icon"><svg width="15" height="15" viewBox="0 0 15 15" fill="none">
               <path d="M7.5 1.5v4M10.5 3L7.5 5.5 4.5 3M2 8h11M2 11h8" stroke="#C8843A" stroke-width="1.3"
                 stroke-linecap="round" stroke-linejoin="round" />
             </svg></div>
           <div class="challenge-title">Urgent Request</div>
           <div class="challenge-quote">You need something quickly without sounding demanding.</div>
+          <div class="challenge-detail">
+            <p class="task">Keep the urgency clear while softening the request and giving a reason.</p>
+          </div>
         </div>
-        <div class="challenge-card" onclick="this.classList.toggle('active')">
+
+        <div class="challenge-card" onclick="toggleChallengeCard(this)">
           <div class="challenge-icon"><svg width="15" height="15" viewBox="0 0 15 15" fill="none">
               <path d="M3 7.5h5M6 5l2.5 2.5L6 10M9 7.5h3" stroke="#C8843A" stroke-width="1.3" stroke-linecap="round"
                 stroke-linejoin="round" />
             </svg></div>
           <div class="challenge-title">Light Disagreement</div>
           <div class="challenge-quote">You need to disagree without sounding cold.</div>
+          <div class="challenge-detail">
+            <p class="task">Acknowledge the other person’s point before giving a slightly different view.</p>
+          </div>
         </div>
-        <div class="challenge-card" onclick="this.classList.toggle('active')">
+
+        <div class="challenge-card" onclick="toggleChallengeCard(this)">
           <div class="challenge-icon"><svg width="15" height="15" viewBox="0 0 15 15" fill="none">
               <path d="M2 10l4-7 3 5 2-3 2 5" stroke="#C8843A" stroke-width="1.3" stroke-linecap="round"
                 stroke-linejoin="round" />
             </svg></div>
           <div class="challenge-title">Too Formal</div>
           <div class="challenge-quote">The first version sounds stiff or unnatural.</div>
+          <div class="challenge-detail">
+            <p class="task">Rewrite the response so it sounds natural, professional, and human.</p>
+          </div>
         </div>
-        <div class="challenge-card" onclick="this.classList.toggle('active')">
+
+        <div class="challenge-card" onclick="toggleChallengeCard(this)">
           <div class="challenge-icon"><svg width="15" height="15" viewBox="0 0 15 15" fill="none">
               <circle cx="7.5" cy="7.5" r="5.5" stroke="#C8843A" stroke-width="1.3" fill="none" />
               <path d="M5 9.5c.5-1.5 4.5-1.5 5 0" stroke="#C8843A" stroke-width="1.3" stroke-linecap="round" />
@@ -4296,25 +4351,31 @@
             </svg></div>
           <div class="challenge-title">Too Casual</div>
           <div class="challenge-quote">The first version sounds too relaxed for the situation.</div>
+          <div class="challenge-detail">
+            <p class="task">Lift the register while keeping the message friendly, simple, and clear.</p>
+          </div>
         </div>
-        <div class="challenge-card" onclick="this.classList.toggle('active')">
+
+        <div class="challenge-card" onclick="toggleChallengeCard(this)">
           <div class="challenge-icon"><svg width="15" height="15" viewBox="0 0 15 15" fill="none">
               <path d="M5 10l-2-2 2-2M10 5l2 2-2 2M8.5 4l-2 7" stroke="#C8843A" stroke-width="1.3"
                 stroke-linecap="round" stroke-linejoin="round" />
             </svg></div>
           <div class="challenge-title">Tone Repair</div>
           <div class="challenge-quote">You need to fix a sentence that landed badly.</div>
+          <div class="challenge-detail">
+            <p class="task">Use a repair phrase, rephrase the point, and continue without making the moment bigger.</p>
+          </div>
         </div>
+
       </div>
-      <div class="info-block mt-20">
-        <div class="info-block-label">How to use these</div>
-        <div class="info-block-text">Choose one prompt from the Practice Prompt Library and one challenge from this
-          page. Practise using one skill or the full framework.</div>
-      </div>
-      <div class="optional-q mt-12">
-        <div class="optional-q-label">Rule</div>
-        <div class="optional-q-text">Add one challenge at a time. The goal is not to sound extra polite. The goal is to
-          sound natural, respectful, and clear.</div>
+
+      <div class="card mt-20">
+        <div class="section-label mb-8">How to use these</div>
+        <p style="font-size:14px;color:var(--muted);line-height:1.65">Choose one prompt from the Practice Prompts page
+          and one challenge from this page. Practise using one skill or the full framework. Add one challenge at a time.
+          The goal is not to sound extra polite. The goal is to stay natural, respectful, clear, and professional when
+          the tone becomes more difficult to manage.</p>
       </div>
     </div>
 
@@ -5064,6 +5125,18 @@
 
     function toggleFullExample(toggle) {
       toggle.classList.toggle('open');
+    }
+
+    function toggleChallengeCard(card) {
+      const wasActive = card.classList.contains('active');
+
+      document.querySelectorAll('.challenge-card').forEach(function (c) {
+        c.classList.remove('active');
+      });
+
+      if (!wasActive) {
+        card.classList.add('active');
+      }
     }
 
     document.addEventListener('keydown', function (e) {
